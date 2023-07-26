@@ -10,6 +10,26 @@ returnMovies(APILINK);
 
 function returnMovies(url){
     fetch(url).then(res => res.json())
+    .then(function(data)){
+        console.log(data.results);
+        data.results.array.forEach(element => {
+            const div_card = document.createElement('div');
+            const div_row = document.createElement('div');
+            const div_column = document.createElement('div');
+            const image = document.createElement('img');
+            const title = document.createElement('h3');
+            const center = document.createElement('center');
+
+            title.innerHTML = `${element.title}`;
+            image.src = IMG_PATH + element.poster_path;
+        });
+    }
+}
+
+/* returnMovies(APILINK);
+
+function returnMovies(url){
+    fetch(url).then(res => res.json())
     .then(function(data){
         console.log(data.results);
         data.results.array.forEach(element => {
@@ -52,4 +72,4 @@ FormData.addEventListner("submit", (e) => {
     }
 });
 
-//does this count as a commit?
+//does this count as a commit? */
